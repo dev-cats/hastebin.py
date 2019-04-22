@@ -1,5 +1,6 @@
-import requests
+from requests import post
 
-def post(content):
-    post = requests.post("https://hastebin.com/documents", data=content.encode('utf-8'))
-    return "https://hastebin.com/" + post.json()["key"]
+
+def post(content, url='https://hastebin.com'):
+    post = post(f'{url}/documents', data=content.encode('utf-8'))
+    return f'{url}/{post.json()["key"]}'
